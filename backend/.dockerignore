@@ -1,0 +1,23 @@
+# Python cache and build artifacts
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+
+# Local environments and editor files
+venv/
+.env
+.env.*
+.vscode/
+.idea/
+
+# Runtime/generated files
+uploads/
+
+# Keep the Docker build context small
+*.log
+.DS_Store

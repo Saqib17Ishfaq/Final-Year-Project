@@ -1,0 +1,79 @@
+# OrthoAI -> Hugging Face Space (Docker) setup commands
+# Run these in PowerShell.
+# Pre-filled for: https://huggingface.co/spaces/abk4tech/orthoai-backend
+# Authentication: use your HF username + ACCESS TOKEN (not account password) when prompted.
+
+# 1) Run from your project root
+cd "C:\Users\abk4t\OneDrive - Higher Education Commission\Bahria University\FYP\Work\OrthoAI"
+
+# 1.1) Optional but recommended: log in via HF CLI once (stores token securely)
+# If you already installed the CLI, just run this:
+hf auth login
+# Paste a token with write permission when prompted.
+
+# 2) Initialize Git LFS (already done on your machine)
+git lfs install
+
+# 3) Clone your HF Space repo
+git clone https://huggingface.co/spaces/abk4tech/orthoai-backend hf-space-backend
+
+# If clone prompts for credentials:
+# Username: your HF username (abk4tech)
+# Password: your HF access token (write permission)
+
+# 4) Sync backend contents into the Space repo root (excluding local/runtime folders)
+robocopy backend hf-space-backend /E /XD venv uploads __pycache__ .pytest_cache .mypy_cache .vscode .idea /XF backend_structure.txt
+
+# 5) Enter the Space repo
+cd hf-space-backend
+
+# 6) Track model files with LFS
+git lfs track "*.onnx"
+git lfs track "*.pt"
+
+# 7) Commit and push to Hugging Face
+git add .gitattributes .
+git commit -m "Deploy OrthoAI backend to Hugging Face Space"
+git push origin main
+
+# If push asks for password, use the HF access token again.
+
+# 8) After push: set Space secrets/variables in HF UI
+# Required secret:
+# GROQ_API_KEY
+#
+# Optional variables:
+# GROQ_MODEL=moonshotai/kimi-k2-instruct-0905
+# GROQ_TIMEOUT_S=30
+# GROQ_TEMPERATURE=0.2
+# GROQ_MAX_TOKENS=1024
+
+# 9) Verify deployment
+# Open:
+# https://abk4tech-orthoai-backend.hf.space/docs
+# Build note: Dockerfile should use 'libgl1' (not 'libgl1-mesa-glx') for current Debian base images.
+#
+# Test these routes:
+# POST /analyze
+# POST /generate-report
+# POST /translate
+
+# 10) Frontend env values
+# NEXT_PUBLIC_BACKEND_URL=https://abk4tech-orthoai-backend.hf.space
+# BACKEND_REPORT_URL=https://abk4tech-orthoai-backend.hf.space/generate-report
+
+# 11) Common errors and quick fixes
+# Error: destination path 'hf-space-backend' already exists and is not an empty directory
+# Fix:
+# Remove-Item -LiteralPath "hf-space-backend" -Recurse -Force
+
+# Error: push rejected with binary file backend_structure.txt
+# Fix:
+# 1) Exclude it during copy (already done in step 4 with /XF backend_structure.txt).
+# 2) If already committed, rewrite local Space commits from remote base:
+#    git reset --soft origin/main
+#    git restore --staged backend_structure.txt
+#    Remove-Item -LiteralPath "backend_structure.txt" -Force -ErrorAction SilentlyContinue
+#    git add .
+#    git commit -m "Deploy OrthoAI backend to Hugging Face Space"
+#    git push --force-with-lease origin main

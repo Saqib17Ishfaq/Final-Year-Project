@@ -1,0 +1,38 @@
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+backend/.env
+hf-space-backend/.env
+
+# JavaScript dependencies and generated output
+node_modules/
+.next/
+out/
+*.tsbuildinfo
+
+# Python environments and caches
+venv/
+.venv/
+backend/venv/
+hf-space-backend/venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Runtime data and local exports
+backend/uploads/
+hf-space-backend/uploads/
+database_dump/
+
+# The Hugging Face deployment checkout is maintained separately.
+hf-space-backend/
+
+# Local editor and operating-system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Large generated inspection dump
+backend/backend_structure.txt

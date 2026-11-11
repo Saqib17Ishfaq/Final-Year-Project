@@ -1,0 +1,162 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Base Colors — neutral fallbacks, overridden by ThemeInjector from clinic.config.ts */
+  --background: #ffffff;
+  --foreground: #374151;
+
+  /* Card Colors */
+  --card: #ffffff;
+  --card-foreground: #374151;
+
+  /* Brand Colors — set dynamically by ThemeInjector */
+  --primary: #6b7280;
+  --primary-foreground: #ffffff;
+
+  --secondary: #f3f4f6;
+  --secondary-foreground: #374151;
+
+  --accent: #f3f4f6;
+  --accent-foreground: #6b7280;
+
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+
+  --muted: #f3f4f6;
+  --muted-foreground: #6b7280;
+
+  --border: #e5e7eb;
+
+  /* Input Colors */
+  --input: #e5e7eb;
+  --ring: #6b7280;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-border: var(--border);
+
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+.dark {
+  --background: #1a1b1e;
+  --foreground: #f9fafb;
+
+  /* Card Colors */
+  --card: #252629;
+  --card-foreground: #f9fafb;
+
+  /* Brand Colors — set dynamically by ThemeInjector */
+  --primary: #9ca3af;
+  --primary-foreground: #ffffff;
+
+  --secondary: #2d2f36;
+  --secondary-foreground: #f9fafb;
+
+  --accent: #4b5563;
+  --accent-foreground: #ffffff;
+
+  --muted: #2d2f36;
+  --muted-foreground: #9ca3af;
+
+  --border: #3f4147;
+
+  /* Input Colors */
+  --input: #3f4147;
+  --ring: #9ca3af;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* react-big-calendar dark mode overrides */
+.dark .rbc-calendar {
+  color: var(--foreground);
+}
+
+.dark .rbc-today {
+  background-color: #2d2f36;
+}
+
+.dark .rbc-off-range-bg {
+  background-color: #141517;
+}
+
+.dark .rbc-header,
+.dark .rbc-time-header-gutter,
+.dark .rbc-time-content,
+.dark .rbc-time-view,
+.dark .rbc-month-view,
+.dark .rbc-agenda-view {
+  color: var(--foreground);
+  border-color: var(--border);
+}
+
+.dark .rbc-header + .rbc-header,
+.dark .rbc-day-bg + .rbc-day-bg,
+.dark .rbc-month-row + .rbc-month-row,
+.dark .rbc-time-content > * + * > *,
+.dark .rbc-timeslot-group {
+  border-color: var(--border);
+}
+
+.dark .rbc-toolbar button {
+  color: var(--foreground);
+  border-color: var(--border);
+}
+
+.dark .rbc-toolbar button:hover,
+.dark .rbc-toolbar button.rbc-active {
+  background-color: var(--secondary);
+  color: var(--foreground);
+}
+
+.dark .rbc-date-cell,
+.dark .rbc-day-bg,
+.dark .rbc-month-row,
+.dark .rbc-time-slot,
+.dark .rbc-label {
+  color: var(--foreground);
+}
+
+.dark .rbc-off-range {
+  color: var(--muted-foreground);
+}
+
+.dark .rbc-show-more {
+  color: var(--primary);
+}
+
+.dark .rbc-current-time-indicator {
+  background-color: var(--primary);
+}

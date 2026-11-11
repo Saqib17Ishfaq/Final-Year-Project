@@ -1,0 +1,93 @@
+/**
+ * OrthoAI onboarding tour theme overrides for driver.js.
+ * Import this file alongside driver.js/dist/driver.css.
+ */
+
+/* Popover container */
+.orthoai-tour-popover {
+  background: var(--card) !important;
+  color: var(--foreground) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25) !important;
+  max-width: 360px !important;
+}
+
+/* Title */
+.orthoai-tour-popover .driver-popover-title {
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  color: var(--foreground) !important;
+}
+
+/* Description */
+.orthoai-tour-popover .driver-popover-description {
+  font-size: 13px !important;
+  line-height: 1.6 !important;
+  color: var(--muted-foreground) !important;
+}
+
+/* Progress text */
+.orthoai-tour-popover .driver-popover-progress-text {
+  font-size: 11px !important;
+  color: var(--muted-foreground) !important;
+}
+
+/* Buttons */
+.orthoai-tour-popover .driver-popover-navigation-btns button {
+  border-radius: 8px !important;
+  padding: 6px 16px !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  transition: all 0.15s ease !important;
+}
+
+/* Next / Done button — primary purple */
+.orthoai-tour-popover .driver-popover-next-btn {
+  background: #8c62c2 !important;
+  color: white !important;
+  border: none !important;
+  text-shadow: none !important;
+}
+
+.orthoai-tour-popover .driver-popover-next-btn:hover {
+  background: #7c4dba !important;
+}
+
+/* Previous button — outlined */
+.orthoai-tour-popover .driver-popover-prev-btn {
+  background: transparent !important;
+  color: var(--foreground) !important;
+  border: 1px solid var(--border) !important;
+  text-shadow: none !important;
+}
+
+.orthoai-tour-popover .driver-popover-prev-btn:hover {
+  background: var(--muted) !important;
+}
+
+/* Close button */
+.orthoai-tour-popover .driver-popover-close-btn {
+  color: var(--muted-foreground) !important;
+}
+
+.orthoai-tour-popover .driver-popover-close-btn:hover {
+  color: var(--foreground) !important;
+}
+
+/* Arrow */
+.orthoai-tour-popover .driver-popover-arrow-side-top {
+  border-bottom-color: var(--card) !important;
+}
+
+.orthoai-tour-popover .driver-popover-arrow-side-bottom {
+  border-top-color: var(--card) !important;
+}
+
+.orthoai-tour-popover .driver-popover-arrow-side-left {
+  border-right-color: var(--card) !important;
+}
+
+.orthoai-tour-popover .driver-popover-arrow-side-right {
+  border-left-color: var(--card) !important;
+}

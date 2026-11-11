@@ -1,0 +1,12 @@
+fastapi
+uvicorn[standard]
+python-multipart
+pydantic
+pillow
+numpy
+ultralytics
+opencv-python-headless
+python-dotenv
+groq
+onnx>=1.17.0
+onnxruntime>=1.20.0
